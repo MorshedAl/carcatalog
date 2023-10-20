@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div>
+    <div class="flex flex-col">
+        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div class="w-full py-2 sm:px-6 lg:px-8">
+            <div class="overflow-hidden">
+              <table class="w-full text-left text-sm font-light">
+                <thead class="border-b font-medium dark:border-neutral-500">
+                  <tr>
+                    <th scope="col" class="px-6 py-4">NO</th>
+                    <th scope="col" class="px-6 py-4">Date</th>
+                    <th scope="col" class="px-6 py-4">Price</th>
+                    <th scope="col" class="px-6 py-4">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for order in orders %}
+                  <tr class="border-b dark:border-neutral-500">
+                  <a href="#">
+                      <td class="whitespace-nowrap px-6 py-4 font-medium">{{forloop.counter}}</td>
+                      <td class="whitespace-nowrap px-6 py-4">{{order.user.create|date:'d-m-Y'}}</td>
+                      <td class="whitespace-nowrap px-6 py-4">{{order.cart.total}}</td>
+                      <td class="whitespace-nowrap px-6 py-4">{{order.status}}</td>
+                    </a>
+                  </tr>
+                  
+                  {% endfor %}
+                  
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-end my-2">
+        {% include 'common/pagination.html' %}
+    </div>
+</div>
+
+
+{% endblock %}

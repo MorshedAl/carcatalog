@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+
+{% block content %}
+
+
+<div class="flex bg-gray-50 dark:bg-gray-900 px-8 py-3 border">
+    
+    <!-- Sidebar -->
+
+    <aside
+      class="w-64 max-h-72 border rounded-lg py-6 transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+      aria-label="Sidenav"
+      id="drawer-navigation"
+    >
+      <div class="px-2 flex flex-col items-center">
+        
+        <img class="w-40 relative h-40 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500" src="{% if user.image %}{{user.image.url}}{% else %}https://flowbite.com/docs/images/people/profile-picture-5.jpg{% endif %}" alt="Bordered avatar">
+          
+            <p class="text-xl font-semibold">{{user.get_full_name}}</p>
+            <p>{{user.email}}</p>
+        </div>
+
+
+    </aside>
+
+    <main class="p-4 h-auto pt-2 w-full">
+
+      <div class="w-full">
+        <form class="space-y-4 md:space-y-6" method="POST" novalidate enctype="multipart/form-data">
+          {% csrf_token %}
+          {% for field in form %}
+          
+          <div>
+              <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{field.label_tag}}</label>
+              
+              {{field}}
+              <p class="text-red-600">{{field.errors}}</p>
+          </div>
+          
+          
+          {% endfor %}
+          
+          <button type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Update</button>
+          
+      </form>
+      </div>
+        
+    </main>
+  </div>
+
+
+
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+

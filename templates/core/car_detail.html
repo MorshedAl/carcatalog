@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block content %}
+
+
+<!-- Container for demo purpose -->
+<div class="container my-24 mx-auto md:px-6">
+    <!-- Section: Design Block -->
+    <section class="mb-32">
+      <div class="flex gap-4">
+        <div class="w-1/2">
+          <img src="{{car.image.url}}"
+            class="mb-6 rounded-lg shadow-lg dark:shadow-black/20" alt="Avatar" />
+        </div>
+  
+        <div class=" ">
+          <h5 class="mb-6 text-xl font-semibold">{{car.title}}</h5>
+          <h2 class="text-2xl font-semibold">Price: {{car.price|intcomma}} </h2>
+          <a href="{% url 'cart_create' car.pk %}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-400 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Buy Now
+            <?xml version="1.0" ?><svg fill="none" height="24" stroke-width="1.5" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6H22L19 16H6L3 6ZM3 6L2.25 3.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.99219 11H11.9922M13.9922 11H11.9922M11.9922 11V9M11.9922 11V13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 19.5C11 20.3284 10.3284 21 9.5 21C8.67157 21 8 20.3284 8 19.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 19.5C17 20.3284 16.3284 21 15.5 21C14.6716 21 14 20.3284 14 19.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+          <p>
+            {{car.description}}
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- Section: Design Block -->
+  </div>
+  <!-- Container for demo purpose -->
+{% endblock content %}

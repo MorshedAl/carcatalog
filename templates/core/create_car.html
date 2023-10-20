@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<section class="bg-white dark:bg-gray-900">
+    <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
+        <h2 class="mb-4 text-3xl font-bold text-gray-900 dark:text-white">Listing new Car</h2>
+        <form method="POST"  enctype='multipart/form-data' novalidate>
+            {% csrf_token %}
+            <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+                <div class="w-full">
+                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{form.title.label_tag}}</label>
+                    {{form.title}}
+                    {{form.title.errors}}
+                </div>
+                <div class="w-full">
+                    <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{form.price.label_tag}}</label>
+                    {{form.price}}
+                    {{form.price.errors}}
+                </div>
+                <div class="w-full">
+                    <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{form.brand.label_tag}}</label>
+                    {{form.brand}}
+                    {{form.brand.errors}}
+                </div>
+                <div class="w-full">
+                    <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{form.modal.label_tag}}</label>
+                    {{form.modal}}
+                    {{form.modal.errors}}
+                </div>
+                
+            </div>
+            <div>
+                    
+                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{form.image.label_tag}}</label>
+                {{form.image}}
+                {{form.image.errors}}
+
+
+            </div> 
+                
+                <div class="sm:col-span-2">
+                    <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{form.description.label_tag}}</label>
+                    {{form.description}} 
+                    {{form.description.errors}} 
+                </div>
+            
+            <div class="flex justify-end">
+                <button type="submit" class="bg-primary-700 inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                    Add Car
+                </button>
+            </div>
+        </form>
+    </div>
+  </section>
+
+{% endblock content %}

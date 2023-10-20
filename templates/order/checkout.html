@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load humanize static %}
+
+
+{% block content %}
+
+<form method='POST'>
+    {% csrf_token %}
+<div class="flex bg-gray-50 dark:bg-gray-900 px-8 py-3 border">
+    
+    <!-- Sidebar -->
+
+    
+    
+    <main class="p-4 h-auto pt-2 w-full">
+        <div>
+            
+                {% if address %}
+        
+        
+                {% else %}
+                    <p class="text-center font-semibold text-xl">There is no address add yet</p>
+                {% endif %}
+                <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+                    
+                    <div class="w-full">
+                        <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{form.country.label_tag}}</label>
+                        {{form.country}}
+                        {{form.country.errors}}
+                    </div>
+                    <div class="w-full">
+                        <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{form.city.label_tag}}</label>
+                        {{form.city}}
+                        {{form.city.errors}}
+                    </div>
+
+                    <div class="w-full">
+                        <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{form.state.label_tag}}</label>
+                        {{form.state}}
+                        {{form.state.errors}}
+                    </div>
+
+                    <div class="sm:col-span-2">
+                        <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
+                        {{form.address_line}}
+                        {{form.address_line.errors}}
+                    </div>
+                    
+                </div>
+            
+        </div>
+    </main>
+
+    {% if cart %}
+    
+    
+    <aside
+      class="min-h-16 w-72 max-h-72 px-2 border rounded-lg py-6 transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+      aria-label="Sidenav"
+      id="drawer-navigation"
+    >
+      <h3 class="text-xl font-bold text-center">Order summary</h3>
+
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        
+        <tbody>
+            <tr class="bg-white dark:bg-gray-80">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    Total
+                </th>
+                <td class="px-6 py-4 text-right">
+                    {{cart.total|intcomma}}
+                </td>
+            </tr>
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    Tax
+                </th>
+                <td class="px-6 py-4 text-right">
+                    20
+                </td>
+            </tr>
+            <tr class="bg-white dark:bg-gray-800">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                   Grand Total
+                </th>
+                <td class="px-6 py-4 text-right">
+                    {{cart.total|add:20|intcomma}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="flex items-center justify-center">
+        <button type="submit" class="text-white my-2 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Checkout</button>
+      </div>
+
+
+      
+        
+        
+        
+    </aside>
+    
+    {% endif %}
+</div>
+</form>
+
+
+
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+

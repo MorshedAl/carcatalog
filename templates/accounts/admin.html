@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+
+{% block content %}
+
+
+<div class="flex bg-gray-50 dark:bg-gray-900 px-8 py-3 border">
+    
+    <!-- Sidebar -->
+
+    <aside
+      class="w-64 max-h-72 border rounded-lg py-6 transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+      aria-label="Sidenav"
+      id="drawer-navigation"
+    >
+    <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+        <ul class="space-y-2 font-medium">
+           <li class="bg-blue-600 rounded-lg">
+              <a href="{% url 'admin_dashboard' request.user.id %}" class="flex items-center p-2 text-white dark:text-white hover:bg-blue-400-100 dark:hover:bg-gray-700 group">
+                 
+                 <span class="ml-3">Dashboard</span>
+              </a>
+           </li>
+
+           <li class="bg-blue-600 rounded-lg">
+            <a href="{% url 'admin_car' %}" class="flex items-center p-2 text-white dark:text-white hover:bg-blue-400-100 dark:hover:bg-gray-700 group">
+               
+               <span class="ml-3">Car List</span>
+            </a>
+         </li>
+
+         <li class="bg-blue-600 rounded-lg">
+            <a href="{% url 'admin_order' %}" class="flex items-center p-2 text-white dark:text-white hover:bg-blue-400-100 dark:hover:bg-gray-700 group">
+               
+               <span class="ml-3">Order List</span>
+            </a>
+         </li>
+           
+           
+        </ul>
+     </div>
+
+
+    </aside>
+
+    <main class="p-4 h-auto pt-2 w-full">
+
+      <div class="w-full">
+        {% block body %}{% endblock body %}
+      </div>
+        
+    </main>
+  </div>
+
+
+
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+
